@@ -1,0 +1,45 @@
+{
+  "name": "global-trading-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "node -e \"const fs = require('fs'); if (fs.existsSync('.next/static')) fs.cpSync('.next/static', '.next/standalone/.next/static', {recursive:true}); if (fs.existsSync('public')) fs.cpSync('public', '.next/standalone/public', {recursive:true});\"",
+    "build:cpanel": "next build --webpack",
+    "start": "node server.js",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "jose": "^6.2.12",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^3.0.0",
+    "jspdf-autotable": "^5.0.2",
+    "lucide-react": "^0.475.0",
+    "next": "^15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
