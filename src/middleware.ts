@@ -21,6 +21,17 @@ async function verifySessionToken(token: string) {
   }
 }
 
+function getPublicUrl(path: string, request: NextRequest): URL {
+  const host =
+    request.headers.get('x-forwarded-host') ||
+    request.headers.get('host') ||
+    request.nextUrl.host;
+  const proto =
+    request.headers.get('x-forwarded-proto') ||
+    (request.headers.get('x-forwarded-ssl') === 'on' ? 'https' : request.nextUrl.protocol.replace(':', ''));
+  return new URL(path, `${proto}://${host}`);
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -47,7 +58,7 @@ export async function middleware(request: NextRequest) {
   if (pathname === '/login') {
     if (isAuthenticated) {
       // Already logged in, redirect directly to dashboard
-      const dashboardUrl = new URL('/dashboard', request.url);
+      const dashboardUrl = getPublicUrl('/dashboard', request);
       return NextResponse.redirect(dashboardUrl);
     }
     // Not logged in, allow visiting login page
@@ -56,7 +67,7 @@ export async function middleware(request: NextRequest) {
 
   // 5. If root path /
   if (pathname === '/') {
-    const targetUrl = new URL(isAuthenticated ? '/dashboard' : '/login', request.url);
+    const targetUrl = getPublicUrl(isAuthenticated ? '/dashboard' : '/login', request);
     return NextResponse.redirect(targetUrl);
   }
 
@@ -73,7 +84,7 @@ export async function middleware(request: NextRequest) {
 
   // 7. Handle all dashboard routes (/dashboard, /students, /fee-bills, /payments, etc.)
   if (!isAuthenticated) {
-    const loginUrl = new URL('/login', request.url);
+    const loginUrl = getPublicUrl('/login', request);
     // Add redirect param so user returns to the page after login
     loginUrl.searchParams.set('from', pathname);
     return NextResponse.redirect(loginUrl);
