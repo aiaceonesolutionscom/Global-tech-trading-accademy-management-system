@@ -194,7 +194,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/settings": {
+    "/reminders": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -207,8 +207,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/settings",
-      "dataRoute": "/settings.rsc",
+      "srcRoute": "/reminders",
+      "dataRoute": "/reminders.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -242,7 +242,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/reminders": {
+    "/settings": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -255,8 +255,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/reminders",
-      "dataRoute": "/reminders.rsc",
+      "srcRoute": "/settings",
+      "dataRoute": "/settings.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -290,30 +290,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/trainers": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/trainers",
-      "dataRoute": "/trainers.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/enrollments": {
       "experimentalBypassFor": [
         {
@@ -329,6 +305,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/enrollments",
       "dataRoute": "/enrollments.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/trainers": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/trainers",
+      "dataRoute": "/trainers.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",

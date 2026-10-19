@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/Button';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('admin@globaltrading.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
+  const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,7 +65,7 @@ export default function LoginPage() {
       {/* Login Card (Proportionally sized to look compact & sleek at 100% zoom) */}
       <div className="w-full max-w-[390px] mt-4">
         <div className="bg-white py-6 px-6 sm:px-7 shadow-sm border border-slate-200 rounded-2xl">
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit} autoComplete="off">
             {error && (
               <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 font-medium">
                 {error}
@@ -85,7 +85,8 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@globaltrading.com"
+                  autoComplete="off"
+                  placeholder="Enter email or username"
                   className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-transparent transition-all"
                 />
               </div>
@@ -104,6 +105,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  autoComplete="new-password"
                   placeholder="••••••••"
                   className="w-full pl-9 pr-10 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#0052CC] focus:border-transparent transition-all"
                 />
@@ -117,7 +119,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs pt-0.5">
+            <div className="flex items-center text-xs pt-0.5">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
@@ -127,7 +129,6 @@ export default function LoginPage() {
                 />
                 <span className="text-slate-600">Remember me</span>
               </label>
-              <span className="text-slate-400">Default: admin123</span>
             </div>
 
             <Button
