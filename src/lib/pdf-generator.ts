@@ -860,8 +860,8 @@ export function generateFeeBillPDF(
 
 
   // --- Right Column: Financial Calculations Summary ---
-  const totLabelX = pw - 52;
-  const totValX = pw - margin;
+  const totLabelX = pw - 62; // 86mm - gives ample space (52mm width) so labels and values never collide
+  const totValX = pw - margin; // 138mm
 
   const subtotalVal = Number(data.subtotal ?? (data as any).total_amount ?? 0);
   const discountVal = Number(data.discountAmount ?? (data as any).discount_amount ?? 0);
@@ -889,7 +889,13 @@ export function generateFeeBillPDF(
     totY += 4.2;
     doc.setFont(fontName, 'normal');
     doc.setTextColor(5, 150, 105); // emerald
-    doc.text(`Discount (${data.discountType || 'FIXED'})`, totLabelX, totY);
+    const discLabel =
+      (data.discountType || '').toUpperCase() === 'PERCENTAGE'
+        ? Number(data.discountValue) > 0
+          ? `Discount (${data.discountValue}%)`
+          : 'Discount (%)'
+        : 'Discount';
+    doc.text(discLabel, totLabelX, totY);
     doc.setFont(fontName, 'bold');
     doc.text(`- ${formatCurrency(discountVal)}`, totValX, totY, { align: 'right' });
   }
@@ -898,7 +904,13 @@ export function generateFeeBillPDF(
     totY += 4.2;
     doc.setFont(fontName, 'normal');
     doc.setTextColor(0, 102, 255);
-    doc.text(`${data.taxName || 'Tax'} (${data.taxType || 'NONE'})`, totLabelX, totY);
+    const taxLabel =
+      (data.taxType || '').toUpperCase() === 'PERCENTAGE'
+        ? Number(data.taxValue) > 0
+          ? `${data.taxName || 'Tax'} (${data.taxValue}%)`
+          : `${data.taxName || 'Tax'} (%)`
+        : (data.taxName || 'Tax');
+    doc.text(taxLabel, totLabelX, totY);
     doc.setFont(fontName, 'bold');
     doc.text(`+ ${formatCurrency(taxVal)}`, totValX, totY, { align: 'right' });
   }

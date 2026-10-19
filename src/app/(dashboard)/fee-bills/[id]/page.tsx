@@ -624,14 +624,26 @@ export default function FeeBillDetailPage() {
 
                 {billData.discountAmount > 0 && (
                   <div className="flex justify-between text-emerald-600 font-medium">
-                    <span>Discount ({billData.discountType}):</span>
+                    <span>
+                      {billData.discountType === 'PERCENTAGE'
+                        ? Number(billData.discountValue) > 0
+                          ? `Discount (${billData.discountValue}%):`
+                          : 'Discount (%):'
+                        : 'Discount:'}
+                    </span>
                     <span>- {formatCurrency(billData.discountAmount)}</span>
                   </div>
                 )}
 
                 {billData.taxAmount > 0 && (
                   <div className="flex justify-between text-[#0066FF] font-medium">
-                    <span>{billData.taxName || 'Tax'} ({billData.taxType}):</span>
+                    <span>
+                      {billData.taxType === 'PERCENTAGE'
+                        ? Number(billData.taxValue) > 0
+                          ? `${billData.taxName || 'Tax'} (${billData.taxValue}%):`
+                          : `${billData.taxName || 'Tax'} (%):`
+                        : `${billData.taxName || 'Tax'}:`}
+                    </span>
                     <span>+ {formatCurrency(billData.taxAmount)}</span>
                   </div>
                 )}

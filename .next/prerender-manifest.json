@@ -122,30 +122,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/fee-bills": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/fee-bills",
-      "dataRoute": "/fee-bills.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/fee-bills/new": {
       "experimentalBypassFor": [
         {
@@ -161,6 +137,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/fee-bills/new",
       "dataRoute": "/fee-bills/new.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fee-bills": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/fee-bills",
+      "dataRoute": "/fee-bills.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -290,30 +290,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/enrollments": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/enrollments",
-      "dataRoute": "/enrollments.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/trainers": {
       "experimentalBypassFor": [
         {
@@ -329,6 +305,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/trainers",
       "dataRoute": "/trainers.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/enrollments": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/enrollments",
+      "dataRoute": "/enrollments.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
