@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/reminders/layout,_N_T_/(dashboard)/reminders/page,_N_T_/reminders"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/3e0122f62eed390968c16a127fa5f93f87ae1b24f128fb22d99e6a44737d1dbf/$/reminders",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/reminders/page"
+    },
+    "isFallback": false
+  }
+}

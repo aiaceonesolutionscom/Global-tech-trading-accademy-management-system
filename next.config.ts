@@ -33,7 +33,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   poweredByHeader: false, // Prevents leaking Next.js tech stack in HTTP headers (DevTools inspect)
   images: {
     unoptimized: true,
@@ -42,6 +41,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
+    workerThreads: false,
     cpus: 1,
     optimizePackageImports: ['lucide-react', 'date-fns', 'recharts', 'jspdf'],
   },

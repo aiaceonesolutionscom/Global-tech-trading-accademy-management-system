@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node -e \"const fs = require('fs'); if (fs.existsSync('.next/static')) fs.cpSync('.next/static', '.next/standalone/.next/static', {recursive:true}); if (fs.existsSync('public')) fs.cpSync('public', '.next/standalone/public', {recursive:true});\"",
-    "build:cpanel": "next build --webpack",
     "start": "node server.js",
     "lint": "next lint",
     "db:push": "prisma db push",

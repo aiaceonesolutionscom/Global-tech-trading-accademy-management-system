@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/students/layout,_N_T_/(dashboard)/students/page,_N_T_/students"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/003869763462055e61623c3fb31a3c10c00a7492f048a6f6b3c6208f6e75fd0a/$/students",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/students/page"
+    },
+    "isFallback": false
+  }
+}

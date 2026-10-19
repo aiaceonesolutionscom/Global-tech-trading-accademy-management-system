@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/courses/layout,_N_T_/(dashboard)/courses/page,_N_T_/courses"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/dae6f0d6c3b2ff0a6aba21ff6570b2f90d6c542cb8cbffb47d2aedfdb1b2bd82/$/courses",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/courses/page"
+    },
+    "isFallback": false
+  }
+}

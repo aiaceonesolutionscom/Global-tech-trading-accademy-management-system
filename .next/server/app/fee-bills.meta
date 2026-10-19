@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/fee-bills/layout,_N_T_/(dashboard)/fee-bills/page,_N_T_/fee-bills"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/de08288ecef4dac218383654c603e2e9f58927f5f413eb7d3ee51b5928f88d39/$/fee-bills",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/fee-bills/page"
+    },
+    "isFallback": false
+  }
+}

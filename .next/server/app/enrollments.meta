@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/enrollments/layout,_N_T_/(dashboard)/enrollments/page,_N_T_/enrollments"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/39108048b5eef4c3953b30929c352f3728959c2bdb21d4af20919c00cdc0ff13/$/enrollments",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/enrollments/page"
+    },
+    "isFallback": false
+  }
+}

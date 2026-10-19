@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(dashboard)/layout,_N_T_/(dashboard)/trainers/layout,_N_T_/(dashboard)/trainers/page,_N_T_/trainers"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/48a5ee703ed27c04ee0e421ec73a02a4cad50f932f18ba381d656e5d31c6340a/$/trainers",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(dashboard)/trainers/page"
+    },
+    "isFallback": false
+  }
+}
