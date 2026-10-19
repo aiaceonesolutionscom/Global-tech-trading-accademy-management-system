@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { AlertTriangle, Trash2, X, Ban, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { formatCurrency } from '@/lib/utils';
@@ -25,10 +26,15 @@ export function DeleteFeeBillModal({
   onSuccess,
   feeBill,
 }: DeleteFeeBillModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (!isOpen || !feeBill) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isOpen || !feeBill || !mounted) return null;
 
   const hasPayments = Number(feeBill.paidAmount) > 0;
 
@@ -61,8 +67,8 @@ export function DeleteFeeBillModal({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+  const modalContent = (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
       <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden">
         {/* Header */}
         <div className="px-6 py-4 bg-rose-50 border-b border-rose-100 flex items-center justify-between">
@@ -195,4 +201,6 @@ export function DeleteFeeBillModal({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
