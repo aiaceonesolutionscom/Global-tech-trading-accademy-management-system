@@ -14,7 +14,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!_next/static|_next/image|favicon.png).*)",
       "headers": [
         {
           "key": "X-DNS-Prefetch-Control",
@@ -43,9 +43,27 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate, max-age=0"
+        },
+        {
+          "key": "Pragma",
+          "value": "no-cache"
         }
       ],
-      "regex": "^(?:/(.*))(?:/)?$"
+      "regex": "^(?:/((?!_next/static|_next/image|favicon.png).*))(?:/)?$"
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ],
+      "regex": "^/_next/static(?:/(.*))(?:/)?$"
     }
   ],
   "rewrites": {

@@ -1,3 +1,7 @@
+process.env.TOKIO_WORKER_THREADS = '1';
+process.env.UV_THREADPOOL_SIZE = '1';
+process.env.RAYON_NUM_THREADS = '1';
+
 const http = require('http');
 const { parse } = require('url');
 const next = require('next');
