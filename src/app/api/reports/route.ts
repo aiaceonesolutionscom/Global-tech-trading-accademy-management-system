@@ -35,8 +35,8 @@ export async function GET(request: Request) {
           { student: { fullName: { contains: search, mode: 'insensitive' } } },
         ];
       }
-      if (studentId) where.studentId = studentId;
-      if (courseId) where.items = { some: { courseId } };
+      if (studentId && studentId !== 'ALL') where.studentId = studentId;
+      if (courseId && courseId !== 'ALL') where.items = { some: { courseId } };
       if (billStatus && billStatus !== 'ALL') where.status = billStatus as BillStatus;
       if (billingMode && billingMode !== 'ALL') where.billingMode = billingMode as BillingMode;
       if (dateFrom || dateTo) {
@@ -93,7 +93,18 @@ export async function GET(request: Request) {
           { student: { fullName: { contains: search, mode: 'insensitive' } } },
         ];
       }
-      if (studentId) where.studentId = studentId;
+      if (studentId && studentId !== 'ALL') where.studentId = studentId;
+      if (courseId && courseId !== 'ALL') {
+        where.allocations = {
+          some: {
+            feeBill: {
+              items: {
+                some: { courseId },
+              },
+            },
+          },
+        };
+      }
       if (paymentMethod && paymentMethod !== 'ALL') where.paymentMethod = paymentMethod as PaymentMethod;
       if (dateFrom || dateTo) {
         where.paymentDate = {};
@@ -148,7 +159,7 @@ export async function GET(request: Request) {
           { course: { courseCode: { contains: search, mode: 'insensitive' } } },
         ];
       }
-      if (studentId) where.studentId = studentId;
+      if (studentId && studentId !== 'ALL') where.studentId = studentId;
       if (courseId && courseId !== 'ALL') where.courseId = courseId;
       if (trainerId && trainerId !== 'ALL') where.trainerId = trainerId;
       if (enrollmentStatus && enrollmentStatus !== 'ALL') where.status = enrollmentStatus as EnrollmentStatus;
@@ -326,7 +337,8 @@ export async function GET(request: Request) {
           { student: { fullName: { contains: search, mode: 'insensitive' } } },
         ];
       }
-      if (studentId) where.studentId = studentId;
+      if (studentId && studentId !== 'ALL') where.studentId = studentId;
+      if (courseId && courseId !== 'ALL') where.items = { some: { courseId } };
 
       const [total, bills, agg] = await Promise.all([
         prisma.feeBill.count({ where }),
