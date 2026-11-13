@@ -102,7 +102,7 @@ export default function RemindersPage() {
                       ) : (
                         <Clock className="w-3 h-3 text-amber-600" />
                       )}
-                      {r.type.replace('_', ' ')}
+                      {r.type ? String(r.type).replace(/_/g, ' ') : '-'}
                     </span>
                     <span className="font-mono font-semibold text-[#0052CC] text-xs bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
                       {r.billNumber}

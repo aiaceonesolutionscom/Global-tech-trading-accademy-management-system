@@ -409,7 +409,7 @@ export default function StudentDetailPage() {
                         {formatDate(enr.enrollmentDate)}
                       </td>
                       <td className="py-3 px-4 font-semibold text-[#0052CC]">
-                        {enr.billingMode.replace('_', ' ')}
+                        {enr.billingMode ? String(enr.billingMode).replace(/_/g, ' ') : '-'}
                       </td>
                       <td className="py-3 px-4 text-slate-600">
                         {enr.durationValue} {enr.durationUnit.toLowerCase()}
@@ -496,7 +496,7 @@ export default function StudentDetailPage() {
                       </td>
                       <td className="py-3 px-4">
                         <span className="px-2 py-0.5 rounded bg-slate-100 text-[11px] font-semibold text-slate-700">
-                          {pmt.paymentMethod.replace('_', ' ')}
+                          {pmt.paymentMethod ? String(pmt.paymentMethod).replace(/_/g, ' ') : '-'}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-slate-600">

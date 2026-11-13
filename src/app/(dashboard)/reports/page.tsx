@@ -33,6 +33,7 @@ export default function ReportsPage() {
   // Reference lists for dropdown filters
   const [trainers, setTrainers] = useState<any[]>([]);
   const [courses, setCourses] = useState<any[]>([]);
+  const [printDateStr, setPrintDateStr] = useState({ date: '', time: '' });
 
   // Filters
   const [search, setSearch] = useState('');
@@ -47,6 +48,11 @@ export default function ReportsPage() {
 
   // Fetch reference lists
   useEffect(() => {
+    setPrintDateStr({
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    });
+
     fetch('/api/trainers?limit=100')
       .then((res) => res.json())
       .then((d) => setTrainers(d.data || []))
@@ -167,9 +173,9 @@ export default function ReportsPage() {
               Official Institutional Report • Faculty, Courses & Student Registry
             </p>
           </div>
-          <div className="text-right text-xs text-slate-600">
-            <div>Printed Date: {new Date().toLocaleDateString()}</div>
-            <div>Time: {new Date().toLocaleTimeString()}</div>
+          <div className="text-right text-xs text-slate-600" suppressHydrationWarning>
+            <div>Printed Date: {printDateStr.date || 'Today'}</div>
+            <div>Time: {printDateStr.time || '-'}</div>
           </div>
         </div>
         <div className="mt-3 p-2 bg-slate-100 rounded text-xs flex justify-between font-semibold text-slate-800">
@@ -486,16 +492,17 @@ export default function ReportsPage() {
                   <div className="bg-slate-50 p-4 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-[#0052CC] text-white flex items-center justify-center font-bold text-sm shrink-0">
-                        {trainer.name
-                          .split(' ')
-                          .map((n: string) => n[0])
+                        {(trainer?.name || 'TR')
+                          .trim()
+                          .split(/\s+/)
+                          .map((n: string) => n[0] || '')
                           .join('')
                           .substring(0, 2)
                           .toUpperCase()}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-bold text-slate-900 text-base">{trainer.name}</h3>
+                          <h3 className="font-bold text-slate-900 text-base">{trainer?.name || 'Faculty Member'}</h3>
                           <span className="font-mono text-[10px] font-bold text-[#0052CC] bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
                             {trainer.trainerCode}
                           </span>
@@ -890,7 +897,7 @@ export default function ReportsPage() {
                         {formatCurrency(r.amount)}
                       </td>
                       <td className="py-3 px-4 text-slate-700 font-medium whitespace-nowrap">
-                        {r.paymentMethod.replace('_', ' ')}
+                        {r.paymentMethod ? String(r.paymentMethod).replace(/_/g, ' ') : '-'}
                       </td>
                       <td className="py-3 px-4 font-mono text-slate-600 text-[11px] whitespace-nowrap">
                         {r.referenceNumber}

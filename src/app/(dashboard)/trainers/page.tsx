@@ -165,15 +165,16 @@ export default function TrainersPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#0052CC] flex items-center justify-center font-bold text-sm">
-                      {t.name
-                        .split(' ')
-                        .map((n: string) => n[0])
+                      {(t?.name || 'TR')
+                        .trim()
+                        .split(/\s+/)
+                        .map((n: string) => n[0] || '')
                         .join('')
                         .substring(0, 2)
                         .toUpperCase()}
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 text-sm">{t.name}</h3>
+                      <h3 className="font-bold text-slate-900 text-sm">{t?.name || 'Trainer'}</h3>
                       <span className="text-[10px] font-mono text-[#0052CC] bg-blue-50 px-2 py-0.5 rounded font-semibold border border-blue-200 inline-block mt-0.5">
                         {t.trainerCode}
                       </span>

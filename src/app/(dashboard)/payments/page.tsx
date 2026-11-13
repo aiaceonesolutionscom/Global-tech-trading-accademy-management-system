@@ -256,7 +256,7 @@ export default function PaymentsPage() {
                       <div className="font-medium text-slate-800">{formatDate(pmt.paymentDate)}</div>
                       <div className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
                         <CreditCard className="w-3 h-3 text-slate-400 shrink-0" />
-                        <span>{pmt.paymentMethod.replace('_', ' ')}</span>
+                        <span>{pmt.paymentMethod ? String(pmt.paymentMethod).replace(/_/g, ' ') : '-'}</span>
                         {pmt.referenceNumber && (
                           <span className="text-slate-400 font-mono font-normal max-w-[120px] truncate" title={pmt.referenceNumber}>
                             ({pmt.referenceNumber})
@@ -332,7 +332,7 @@ export default function PaymentsPage() {
                 <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 text-xs space-y-2">
                   <div className="flex items-center justify-between text-slate-600">
                     <span>Payment Method:</span>
-                    <span className="font-semibold text-slate-800">{pmt.paymentMethod.replace('_', ' ')}</span>
+                    <span className="font-semibold text-slate-800">{pmt.paymentMethod ? String(pmt.paymentMethod).replace(/_/g, ' ') : '-'}</span>
                   </div>
                   <div className="flex items-center justify-between text-slate-600">
                     <span>Date:</span>

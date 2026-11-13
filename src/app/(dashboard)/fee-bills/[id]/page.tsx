@@ -504,7 +504,7 @@ export default function FeeBillDetailPage() {
             <div className="flex justify-between md:justify-end gap-3">
               <span className="text-slate-500">Billing Mode:</span>
               <span className="font-semibold text-[#0066FF]">
-                {billData.billingMode.replace('_', ' ')}
+                {billData.billingMode ? String(billData.billingMode).replace(/_/g, ' ') : '-'}
               </span>
             </div>
             <div className="mt-2 inline-block">
@@ -538,7 +538,7 @@ export default function FeeBillDetailPage() {
                       <td className="py-3 px-4">
                         <div className="font-semibold text-slate-900">{it.course.name}</div>
                         <div className="text-[11px] text-slate-500">
-                          Mode: {it.billingMode.replace('_', ' ')} • Instructor: {it.course.trainer?.name || 'Assigned'}
+                          Mode: {it.billingMode ? String(it.billingMode).replace(/_/g, ' ') : '-'} • Instructor: {it.course.trainer?.name || 'Assigned'}
                         </div>
                         {billData.startDate && billData.endDate && (
                           <div className="text-[11px] font-medium text-[#0066FF] mt-0.5">
@@ -817,7 +817,7 @@ export default function FeeBillDetailPage() {
                           : 'bg-blue-100 text-[#0052CC]'
                       }`}
                     >
-                      {billData.status.replace('_', ' ')}
+                      {billData.status ? String(billData.status).replace(/_/g, ' ') : '-'}
                     </span>
                   </div>
                   <div className="space-y-0.5">
@@ -911,7 +911,7 @@ export default function FeeBillDetailPage() {
                           {formatDate(row.paymentDate)}
                         </td>
                         <td className="py-2.5 px-3 text-slate-700 font-medium">
-                          {row.paymentMethod.replace('_', ' ')}
+                          {row.paymentMethod ? String(row.paymentMethod).replace(/_/g, ' ') : '-'}
                         </td>
                         {includePreviousHistory && (
                           <td className="py-2.5 px-3">
